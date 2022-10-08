@@ -21,10 +21,10 @@ def autenticar(obj: Credenciais):
         # Fazer um select na tabela de usuários do banco de dados para verificar se encontra um usuário com o
         # código e senha recebido pelas credenciais.
         rows = cursor.execute(
-            "SELECT codigoUsuario, nome FROM Usuario "+
-            " WHERE codigoUsuario = :codigoUsuario "+
-            "   AND senha = :senha",
-            {"codigoUsuario":obj.codigoUsuario,
+            "SELECT Usuario, nome FROM Usuario "+
+            " WHERE Usuario = :Usuario "+
+            "   AND senha = :senha",  # Ou pode fazer select * from ViewUsuario que será uma mesmo select só que d euma view vindo do banco de dados.
+            {"Usuario":obj.codigoUsuario,
              "senha":obj.senha}
         ).fetchall()
         cursor.close()
